@@ -5,9 +5,10 @@ import React, { useState } from "react";
 //create your first component
 const TrafficLight = () => {
 	const [color, setColor] = useState("");
-
-	// Usage
-	//   <button onClick={sayHello}>Default</button>;
+	const [colorPurple, setColorPurple] = useState(true);
+	function agregar() {
+		setColorPurple(!colorPurple);
+	}
 	return (
 		<>
 			<div className="base-light"></div>
@@ -25,8 +26,16 @@ const TrafficLight = () => {
 						"light green" + (color === "green" ? " glow3" : "")
 					}
 					onClick={() => setColor("green")}></div>
+				{colorPurple && (
+					<div
+						className={
+							"light purple" +
+							(color === "purple" ? " glow4" : "")
+						}
+						onClick={() => setColor("purple")}></div>
+				)}
 			</div>
-			;
+			<button onClick={() => agregar()}>Click me</button>;
 		</>
 	);
 };
